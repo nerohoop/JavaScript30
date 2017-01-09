@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- title tag is required in all HTML documents -->
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,7 +11,10 @@
 
   <div class="keys">
     <div data-key="65" class="key">
+      <!-- kbd tag is a phrase tag. It defines keyboard input -->
       <kbd>A</kbd>
+      <!-- span tag is used to group inline-elements in a document -->
+      <!-- it provides a way to add a hook to a part of a text or part of a document -->
       <span class="sound">clap</span>
     </div>
     <div data-key="83" class="key">
@@ -58,7 +62,16 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+  // Window is the main JavaScript object root, aka the global object in a browser
+  // also can be treated as the root of the document object model.
+  // window.screen is a small information object about physical screen dimensions
+  // window.document or just document is the main object of the visible document object
+  window.addEventListener('keydown', function(event) {
+    // querySelector() : get the first element in the document with class = 'example'
+    const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+    if (!audio) return; // stop the function from running all together
+    audio.play();
+  });
 </script>
 
 
