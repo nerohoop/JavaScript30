@@ -8,7 +8,6 @@
 </head>
 <body>
 
-
   <div class="keys">
     <div data-key="65" class="key">
       <!-- kbd tag is a phrase tag. It defines keyboard input -->
@@ -61,34 +60,9 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-
-  function playSound(event) {
-    // querySelector() : get the first element in the document with class = 'example'
-    const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
-    if (!audio) return; // stop the function from running all together
-    audio.currentTime = 0;
-    audio.play();
-    key.classList.add('playing');
-  }
-
-  function removeTransition(event) {
-    if (event.propertyName !== 'transform') return;
-    this.classList.remove('playing');
-  }
-
-  const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  // Window is the main JavaScript object root, aka the global object in a browser
-  // also can be treated as the root of the document object model.
-  // window.screen is a small information object about physical screen dimensions
-  // window.document or just document is the main object of the visible document object
-  // addEventListener method attaches an event handler to the specific element.
-  window.addEventListener('keydown', playSound);
-
-</script>
-
+<!-- In HTML, JavaScript code must be inserted between <script> and </script> tags. -->
+<!-- Placing scripts at the bottom of the <body> element improves the display speed, because script compilation slows down the display.-->
+<script src="myScript.js"></script>
 
 </body>
 </html>
