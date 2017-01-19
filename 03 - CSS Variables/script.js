@@ -1,20 +1,9 @@
-const spacingInput = document.getElementById('spacing');
-const blurInput = document.getElementById('blur');
-const baseInput = document.getElementById('base');
-const imageElement = document.querySelector('img');
+const inputs = document.querySelectorAll('.controls input')
 
-function spacingValueChanged() {
-  imageElement.style.border= `${spacing.value}px`;
+function handleUpdate() {
+  const suffix = this.dataset.sizing || '';
+  document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
 }
 
-function blurValueChanged() {
-  imageElement.style.filter = `blur(${blurInput.value}px)`;
-}
-
-function baseColorChanged() {
-  imageElement.style.filter = `blur(${blurInput.value}px)`;
-}
-
-spacingInput.addEventListener('input', spacingValueChanged);
-blurInput.addEventListener('input', blurValueChanged);
-baseInput.addEventListener('input', baseColorChanged);
+inputs.forEach(input => input.addEventListener('change', handleUpdate));
+inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
