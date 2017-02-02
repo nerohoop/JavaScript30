@@ -1,6 +1,9 @@
 const panels = document.querySelectorAll('.panel');
 
 function toggleOpen(e) {
+  // When only one argument is present: Toggle class value;
+  // if class exists then remove it and return false
+  // if not, then add it and return true.
   this.classList.toggle('open');
 }
 

@@ -43,4 +43,40 @@ Flexbox is a quite an useful tool, it make the layout issue in web pages a breez
     }
     ```
 
-  4.
+  4. Next we need to make the panels interactive. We iterate though all the panels and add an event listener to handle user click. Here I learned how to iterate through an array with a clean syntax.
+
+  ```JavaScript
+  const panels = document.querySelectorAll('.panel');
+  function toggleOpen(e) {
+    this.classList.toggle('open');
+  }
+  panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+  ```
+
+  5. Now we are able to see the animation when user click on the panel. An asterisk is the universal selector for CSS.
+
+    ```CSS
+    .panel > *:first-child {
+      transform: translateY(-100%);
+    }
+    .panel.open-active > *:first-child {
+      transform: translateY(0);
+    }
+    .panel > *:last-child {
+      transform: translateY(100%);
+    }
+    .panel.open-active > *:last-child {
+      transform: translateY(0);
+    }
+    ```
+
+  6. Last, we need to trigger the animation when the first animation finishes. In order to do this, let's add an event listener to the panels
+
+  ```JavaScript
+  function toggleActive(e) {
+    if (e.propertyName.includes('flex')) {
+      this.classList.toggle('open-active');
+    }
+  }
+  panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+  ```
