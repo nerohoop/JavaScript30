@@ -8,11 +8,22 @@ request.responseType = 'json';
 request.send();
 request.onload = function() {
   cities = request.response;
-  populateTable();
-}
+};
 
-function populateTable() {
+function updateSuggestionList() {
+  var suggestionList = document.querySelector('.suggestions');
+  suggestionList.innerHTML = '';
 
+  cities.forEach(function(cityInfo) {
+    var listItem = document.createElement('li');
+    var name = cityInfo.city + ', ' + cityInfo.state;
+    var filter = textField.value;
+
+    if (name.toLowerCase().match(filter.toLowerCase())) {
+      listItem.appendChild(document.createTextNode(name));
+      suggestionList.appendChild(listItem);
+    }
+  });
 }
 
 const textField = document.querySelector('.search');
@@ -20,6 +31,6 @@ const textField = document.querySelector('.search');
 textField.addEventListener('change', didChangeText);
 textField.addEventListener('keyup', didChangeText);
 
-function didChangeText(event) {
-
+function didChangeText() {
+  updateSuggestionList();
 }
