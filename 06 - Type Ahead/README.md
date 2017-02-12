@@ -46,3 +46,23 @@ You can chain thens together to transform values or run additional async actions
     // Fail
   });
 ```
+
+Now we have all the data we need by sending a request to the server. Next we need to detect user input in search bar.
+We need to add two event listener to detect text change.
+  ```JavaScript
+    textField.addEventListener('change', didChangeText);
+    textField.addEventListener('keyup', didChangeText);
+  ```
+
+### Regular Expression
+
+When user types anything in the search bar, we need to update the list accordingly. Regular expressions are patterns used to match character combinations in strings. The search patter can be used for text search and text replace operation. When you search for data in a text, you can use this search pattern to describe what you are searching for.
+
+  ```JavaScript
+    var re = /ab + c/;
+    var re = new RegExp("ab + c");
+
+    var str = "Visit W3School";
+    var re = new RegExp("w3school", "i");
+    var result = str.search(re);
+  ```
