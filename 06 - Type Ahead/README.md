@@ -37,7 +37,8 @@ It returns a promise that resolves to the Response.
 
 ### Promise
 
-JavaScript is single thread. Typically, it's in the same queue as painting, updating styles. The Promise object is used for asynchronous computations. A Promise represents a value which may be available now, or in the future, or never. All promise instances get a then method which allows you to react to the promise. The first then callback receives the result given to it by the resolve() call.
+JavaScript is single thread. Typically, it's in the same queue as painting, updating styles. The Promise object is used for asynchronous computations. A Promise represents a value which may be available now, or in the future, or never. All promise instances get a then method which allows you to react to the promise. then() takes two arguments, a callback for success case, another for failure case.
+You can chain thens together to transform values or run additional async actions one after another.
 ``` JavaScript
   promise.then(function(result) {
     // Succeed
